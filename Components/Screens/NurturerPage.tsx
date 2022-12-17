@@ -210,8 +210,6 @@ width:'90%'
                 </View>
             </View>
             </View>
-            
-
         </View>
     </MiddlewareScreen>
 

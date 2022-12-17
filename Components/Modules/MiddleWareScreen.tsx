@@ -14,6 +14,7 @@ export default function MiddlewareScreen(props:ScreenProps){
     }else if (props.ImageType=="Meditate"){
 
     }else if (props.ImageType=="Inspire"){
+        imageSrc=require("./../Assets/inspire.png")
 
     }
     
@@ -79,11 +80,21 @@ export default function MiddlewareScreen(props:ScreenProps){
          justifyContent:'center',
          alignItems:'center'
         }}>
+        {/* <View style={{
+            borderWidth:1,
+            borderStyle:'solid',
+            borderRadius:225,
+            shadowColor:"red",
+            shadowRadius:10,
+            elevation:1,
+            shadowOpacity:1
+        }}> */}
 
     <Image style={{
         height:200,
         width:190,
     }} source={imageSrc}/>
+    {/* </View> */}
     </View>
     <View style={{
         marginTop:-70,
