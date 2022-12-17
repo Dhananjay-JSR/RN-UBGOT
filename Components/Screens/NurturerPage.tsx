@@ -16,7 +16,7 @@ function ComponentFrame(props:ComponentsProps){
     return <>
     <View style={{
         position:'relative',
-        marginTop:10,
+        marginTop:5,
         height:props.ContainerHeight,
         padding:5,
         alignItems:'center',
@@ -95,7 +95,7 @@ function Component2(props:{text1:string,text2:string}){
         position:'relative',
         marginTop:10,
         borderRadius:15,
-        height:105,
+        height:115,
         backgroundColor:'white',
         paddingLeft:10,
         width:'100%'
@@ -109,7 +109,7 @@ function Component2(props:{text1:string,text2:string}){
         }}>
             <View style={{
                 backgroundColor:"#E5FADA",
-                height:"85%",
+                height:"75%",
                 width:60,
                 borderRadius:10,
             }}>
@@ -135,7 +135,8 @@ function Component2(props:{text1:string,text2:string}){
             </View>
         </View>
             <Pressable onPress={()=>{}} style={{
-                marginTop:-13,
+                marginTop:-17,
+                marginLeft:-5,
                 height:25,
                 width:'100%',
                 display:'flex',
@@ -192,7 +193,7 @@ width:'90%'
                 </Text>
                 <ComponentFrame AvatarHeight={100} AvatarWidth={100} ContainerHeight={160} fontSize={20} Text1={"Talk to Listener"} Text2={"Already Enrolled"} backgroundColor={"#88e6559e"} profileColor={"white"}/>
                 <View style={{
-                marginTop:15
+                marginTop:10
             }}>
                 <Text style={{
                     color:'#7B7870',
