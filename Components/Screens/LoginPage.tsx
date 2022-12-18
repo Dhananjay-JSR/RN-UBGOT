@@ -3,7 +3,8 @@ import { Text, TextInput, Touchable, View } from "react-native";
 import LogoHolder from "../Modules/LogoHolder";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Pressable } from "react-native";
-
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+type Props = NativeStackScreenProps<any,any>;
 function Header() {
     return <View style={{
         display: 'flex',
@@ -51,8 +52,12 @@ function Hero() {
     </View>
 }
 
-function SignUpFormHolder() {
-    return <>
+
+
+export default function LoginPage({ route, navigation }: Props) {
+    return <View>
+        <Header />
+        <Hero />
         <View style={{
             marginTop: 10,
             height: '100%',
@@ -141,7 +146,9 @@ function SignUpFormHolder() {
             }}>
 
 
-                <View style={{
+                <Pressable onPress={()=>{
+                    navigation.navigate("Main")
+                }} style={{
                     height: 40,
                     backgroundColor: '#5B84B5',
                     display: 'flex',
@@ -156,7 +163,7 @@ function SignUpFormHolder() {
                     }}>
                         Sign Up
                     </Text>
-                </View>
+                </Pressable >
                 <View style={{
                     marginTop: 5
                 }}>
@@ -174,14 +181,6 @@ function SignUpFormHolder() {
                 </View>
             </View>
         </View>
-    </>
-}
-
-
-export default function LoginPage() {
-    return <View>
-        <Header />
-        <Hero />
-        <SignUpFormHolder />
+    
     </View>
 }

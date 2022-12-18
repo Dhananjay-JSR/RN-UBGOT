@@ -2,6 +2,8 @@ import React from "react";
 import { ScrollView, Button, Text, View, Pressable } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'
 import MiddlewareScreen from "../Modules/MiddleWareScreen";
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+type Props = NativeStackScreenProps<any,any>;
 interface PostComponentsProps {
     name: string,
     isLiked: boolean
@@ -110,12 +112,15 @@ function PostComponent(props: PostComponentsProps) {
     </View></>
 }
 
-export default function InspirePage() {
+export default function InspirePage({ route, navigation }: Props) {
     return <View style={{
         position: 'relative',
         height: '100%',
         width: '100%'
-    }}><MiddlewareScreen ImageType="Inspire" backgroundColor={"#fcc2c636"} title="Inspire" titleColor={"#FCC2C6"} >
+        
+    }}>
+        {/* @ts-ignore */}
+        <MiddlewareScreen navigationProp={navigation.openDrawer} ImageType="Inspire" backgroundColor={"#fcc2c636"} title="Inspire" titleColor={"#FCC2C6"} >
             <ScrollView style={{
                 flex: 1,
                 width: '100%',

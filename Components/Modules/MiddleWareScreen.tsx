@@ -5,7 +5,8 @@ interface ScreenProps{
     titleColor:ColorValue,
     backgroundColor:ColorValue,
     ImageType:"Nurture"|"Meditate"|"Inspire",
-    children:React.ReactNode
+    children:React.ReactNode,
+    navigationProp?:any,
 }
 export default function MiddlewareScreen(props:ScreenProps){
     let imageSrc = require("./../Assets/boy_running.png")
@@ -30,7 +31,7 @@ export default function MiddlewareScreen(props:ScreenProps){
         flexDirection:'row',
     }}>
        <Pressable onPress={()=>{
-
+        props.navigationProp();
 }} style={{
       height:25,
       width:55,

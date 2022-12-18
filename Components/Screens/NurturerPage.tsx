@@ -1,6 +1,8 @@
 import { ColorValue, Image, Pressable, Text, View } from "react-native";
 import MiddlewareScreen from "../Modules/MiddleWareScreen";
 import Icon from 'react-native-vector-icons/Ionicons'
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+type Props = NativeStackScreenProps<any,any>;
 
 interface ComponentsProps {
     Text1: string,
@@ -172,9 +174,9 @@ function Component2(props: { text1: string, text2: string }) {
 }
 
 
-export default function NurturePage() {
-
-    return <MiddlewareScreen title="Nurture" titleColor={'#85E551'} backgroundColor={'#e5fada'} ImageType={"Nurture"}>
+export default function NurturePage({ route, navigation }: Props) {
+    // @ts-ignore
+    return <MiddlewareScreen navigationProp={navigation.openDrawer}title="Nurture" titleColor={'#85E551'} backgroundColor={'#e5fada'} ImageType={"Nurture"}>
         <View style={{
             height: '100%',
             width: '100%',

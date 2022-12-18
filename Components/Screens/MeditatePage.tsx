@@ -1,7 +1,8 @@
 import { Image, Pressable, ScrollView, Text, Vibration, View } from "react-native";
 import MiddlewareScreen from "../Modules/MiddleWareScreen";
 import Icon from 'react-native-vector-icons/Ionicons'
-
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+type Props = NativeStackScreenProps<any,any>;
 function HorizontalController() {
     return <>
         <View style={{
@@ -156,13 +157,14 @@ function YogaComponents({ show }: { show: boolean }) {
     </View>
 }
 
-export default function MeditatePage() {
+export default function MeditatePage({ route, navigation }: Props) {
     return <><ScrollView style={{
         flex: 1,
         height: '100%',
         width: '100%'
     }}>
-        <MiddlewareScreen ImageType="Meditate" backgroundColor={"#ffff6436"} title="Meditate" titleColor={"#FBD87F"} >
+        {/* @ts-ignore */}
+        <MiddlewareScreen navigationProp={navigation.openDrawer} ImageType="Meditate" backgroundColor={"#ffff6436"} title="Meditate" titleColor={"#FBD87F"} >
             <ScrollView style={{
                 // height:120
             }} horizontal>

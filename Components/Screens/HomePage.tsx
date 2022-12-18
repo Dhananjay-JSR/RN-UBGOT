@@ -1,7 +1,10 @@
 import { Image, Pressable, ScrollView, Text, View, TouchableOpacity } from "react-native";
 import { SvgUri } from "react-native-svg";
 import Icon from 'react-native-vector-icons/Ionicons'
+// @ts-ignore
 import SVGImg  from "../Assets/holder.svg"
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+type Props = NativeStackScreenProps<any,any>;
 
 
 function HorizontalController({ type }: { type: "meditate" | "inspire" | "nurture" }) {
@@ -50,7 +53,7 @@ function HorizontalController({ type }: { type: "meditate" | "inspire" | "nurtur
     </View>
 }
 
-export default function HomePage() {
+export default function HomePage({ route, navigation }: Props) {
     return <>
         <View style={{
             marginTop: 50,
@@ -67,26 +70,26 @@ export default function HomePage() {
                 justifyContent: 'space-between'
             }}>
                 <Pressable onPress={() => {
-
+                    //@ts-ignore
+                    navigation.openDrawer()
                 }} style={{
-                    height: "100%",
-                    width: 70,
+                    height: "70%",
+                    width: 50,
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between'
                 }}>
                     <View style={{
-                        height: 10,
-
-                        width: '100%',
+                        height: 7,
+                        width: '90%',
                         backgroundColor: "#5B84B5",
                         borderRadius: 10
                     }}>
                     </View>
                     <View style={{
-                        height: 10,
+                        height: 7,
 
-                        width: '70%',
+                        width: '50%',
                         backgroundColor: "#5B84B5",
                         borderRadius: 10
                     }}>
