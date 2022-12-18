@@ -12,7 +12,7 @@ export default function MiddlewareScreen(props:ScreenProps){
     if (props.ImageType=="Nurture"){
         imageSrc = require("./../Assets/boy_running.png")
     }else if (props.ImageType=="Meditate"){
-
+        imageSrc=require("./../Assets/girl.png")
     }else if (props.ImageType=="Inspire"){
         imageSrc=require("./../Assets/inspire.png")
 
