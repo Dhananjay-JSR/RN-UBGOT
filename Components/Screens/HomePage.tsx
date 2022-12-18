@@ -1,5 +1,7 @@
 import { Image, Pressable, ScrollView, Text, View, TouchableOpacity } from "react-native";
+import { SvgUri } from "react-native-svg";
 import Icon from 'react-native-vector-icons/Ionicons'
+import SVGImg  from "../Assets/holder.svg"
 
 
 function HorizontalController({ type }: { type: "meditate" | "inspire" | "nurture" }) {
@@ -91,10 +93,25 @@ export default function HomePage() {
 
                     </View>
                 </Pressable>
-                <Pressable onPress={() => {
-
+                <Pressable style={{
+                    position:'relative'
+                }} onPress={() => {
+                    
                 }}>
-                    <Icon name="heart" color={"#f9595f"} size={30} />
+                    <View style={{
+                        position:'absolute',
+                        right:10
+                    }}>
+
+                        <SVGImg />
+                    </View>
+
+                     
+                    <Icon style={{
+                        position:'absolute',
+                        right:23,
+                        top:13
+                    }} name="heart" color={"#f9595f"} size={33} />
                 </Pressable >
             </View>
 
@@ -217,18 +234,43 @@ export default function HomePage() {
             justifyContent: 'center',
             alignItems: 'center'
         }}>
-            <TouchableOpacity activeOpacity={0.6} style={{
+            <View  style={{
+                position:'relative',
                 height: '100%',
                 width: '60%',
                 backgroundColor: '#3C6CA7',
                 borderRadius: 10,
                 justifyContent: 'center',
                 alignItems: 'center'
-            }}><Text style={{
+            }}>
+                <TouchableOpacity onPress={()=>{
+                    
+                }} activeOpacity={0.6} style={{
+                    height:'100%',
+                    width:'100%',
+                    justifyContent: 'center',
+                alignItems: 'center'
+                }}>
+                <Text style={{
                 color: 'white'
             }}>
-                    Book a session with Therapist
-                </Text></TouchableOpacity>
+                Book a session with Therapist
+                </Text>
+                </TouchableOpacity>
+                    
+                <TouchableOpacity activeOpacity={0.2} onPress={()=>{
+
+                }} style={{
+                    backgroundColor:'#FA634F',
+                    height:'100%',
+                    position:"absolute",
+                    width:45,
+                    borderRadius:8,
+                    right:-50
+                }}>
+
+                </TouchableOpacity>
+                </View>
 
         </View>
     </>
