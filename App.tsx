@@ -1,4 +1,5 @@
 // import StartUpPage from "./Components/StartupPage";
+import HomePage from "./Components/Screens/HomePage"
 import InspirePage from "./Components/Screens/InspirePage"
 import LoginPage from "./Components/Screens/LoginPage"
 import MeditatePage from "./Components/Screens/MeditatePage"
@@ -8,5 +9,8 @@ export default function App (){
   // return <LoginPage/>
   // return <NurturePage/>
   // return <InspirePage/>
-  return <MeditatePage/>
+  // return <MeditatePage/>
+  return <HomePage/>
+
+
 }
