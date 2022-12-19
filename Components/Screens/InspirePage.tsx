@@ -20,7 +20,6 @@ function PostComponent(props: PostComponentsProps) {
             flexDirection: 'row',
             justifyContent: 'space-between'
         }}>
-
             <View style={{
                 display: 'flex',
                 flexDirection: 'row'
@@ -75,8 +74,6 @@ function PostComponent(props: PostComponentsProps) {
             backgroundColor: 'white',
             height: '70%'
         }}>
-
-
         </View>
         <View style={{
             marginTop: 5,
@@ -149,12 +146,9 @@ export default function InspirePage({ route, navigation }: Props) {
             borderRadius:Dimensions.get('window').height*0.3
         }}>
             <Image source={require('../Assets/Add.png')} resizeMode="contain" style={{
-                // width:Dimensions.get('window').height*0.09,
-                // height:Dimensions.get('window').height*0.09
                 width:'80%',
                 height:'80%'
             }}/>
-            {/* <Icon name="add-circle" size={60} color="#9C5DA3" /> */}
         </Pressable >
     </View>
 }

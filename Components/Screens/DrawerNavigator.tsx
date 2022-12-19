@@ -12,7 +12,7 @@ const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator(){
     return <>
-    <Drawer.Navigator initialRouteName='Inspire'>
+    <Drawer.Navigator>
         <Drawer.Screen options={{
           headerShown:false
         }} name='Home' component={HomePage}/> 
