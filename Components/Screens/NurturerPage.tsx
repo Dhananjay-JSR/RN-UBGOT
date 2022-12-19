@@ -1,4 +1,4 @@
-import { ColorValue, Image, Pressable, Text, View } from "react-native";
+import { ColorValue, Dimensions, Image, Pressable, Text, View } from "react-native";
 import MiddlewareScreen from "../Modules/MiddleWareScreen";
 import Icon from 'react-native-vector-icons/Ionicons'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -10,8 +10,8 @@ interface ComponentsProps {
     backgroundColor: ColorValue,
     profileColor: ColorValue,
     ContainerHeight: number,
-    AvatarHeight: number,
-    AvatarWidth: number,
+    AvatarHeight: string,
+    AvatarWidth: string,
     fontSize: number
 }
 function ComponentFrame(props: ComponentsProps) {
@@ -44,7 +44,7 @@ function ComponentFrame(props: ComponentsProps) {
                 </View>
                 <View style={{
                     padding: 10,
-                    height: 100,
+                    height: '100%',
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
@@ -63,11 +63,10 @@ function ComponentFrame(props: ComponentsProps) {
                 </View>
             </View>
             <Pressable onPress={() => {
-
             }} style={{
                 position: 'absolute',
-                right: 15,
-                top: 50
+                right: '7%',
+                top: '40%'
             }}>
                 <Icon name="information-circle-outline" size={30} color={"#4b6c3a"} />
             </Pressable>
@@ -75,15 +74,16 @@ function ComponentFrame(props: ComponentsProps) {
 
             }} style={{
                 backgroundColor: '#4B6C3A',
-                marginTop: 10,
+                marginTop: '1%',
                 borderRadius: 5,
-                height: 25,
+                height: '20%',
                 width: '90%',
                 justifyContent: 'center',
             }}>
                 <Text style={{
                     textAlign: 'center',
                     color: 'white',
+                    fontSize:Dimensions.get('window').height*0.02
                 }}>
                     Explore
                 </Text>
@@ -95,15 +95,15 @@ function ComponentFrame(props: ComponentsProps) {
 function Component2(props: { text1: string, text2: string }) {
     return <><View style={{
         position: 'relative',
-        marginTop: 10,
-        borderRadius: 15,
-        height: 115,
+        marginTop: Dimensions.get('window').height*0.023,
+        borderRadius: Dimensions.get('window').height*0.02,
+        height: Dimensions.get('window').height*0.15,
         backgroundColor: 'white',
-        paddingLeft: 10,
+        paddingLeft: Dimensions.get('window').height*0.01,
         width: '100%'
     }}>
         <View style={{
-            margin: 7,
+            margin: '3%',
             display: 'flex',
             width: '100%',
             height: '70%',
@@ -112,18 +112,18 @@ function Component2(props: { text1: string, text2: string }) {
             <View style={{
                 backgroundColor: "#E5FADA",
                 height: "75%",
-                width: 60,
+                width: Dimensions.get('window').height*0.07,
                 borderRadius: 10,
             }}>
 
             </View>
             <View style={{
-                padding: 10,
+                padding: Dimensions.get('window').height*0.01,
 
             }}>
 
                 <Text style={{
-                    fontSize: 16,
+                    fontSize: Dimensions.get('window').height*0.023,
                     color: '#4B6C3A',
 
                 }}>
@@ -136,10 +136,12 @@ function Component2(props: { text1: string, text2: string }) {
                 </Text>
             </View>
         </View>
-        <Pressable onPress={() => { }} style={{
-            marginTop: -17,
+        <Pressable onPress={() => { 
+        
+        }} style={{
+            marginTop: '-5%',
             marginLeft: -5,
-            height: 25,
+            height: '23%',
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
@@ -155,7 +157,8 @@ function Component2(props: { text1: string, text2: string }) {
             }}>
                 <Text style={{
                     color: 'white',
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    fontSize:Dimensions.get('window').height*0.02
                 }}>
                     Explore
                 </Text>
@@ -189,23 +192,23 @@ export default function NurturePage({ route, navigation }: Props) {
                 <Text style={{
                     color: '#7B7870',
                     fontWeight: '500',
-                    fontSize: 20
+                    fontSize: Dimensions.get('window').height*0.03
                 }}>
                     Recently used
                 </Text>
-                <ComponentFrame AvatarHeight={100} AvatarWidth={100} ContainerHeight={160} fontSize={20} Text1={"Talk to Listener"} Text2={"Already Enrolled"} backgroundColor={"#88e6559e"} profileColor={"white"} />
+                <ComponentFrame AvatarHeight={'100%'} AvatarWidth={'23%'} ContainerHeight={Dimensions.get('window').height*0.17} fontSize={Dimensions.get('window').height*0.024} Text1={"Talk to Listener"} Text2={"Already Enrolled"} backgroundColor={"#88e6559e"} profileColor={"white"} />
                 <View style={{
-                    marginTop: 10
+                    marginTop: Dimensions.get('window').height*0.02
                 }}>
                     <Text style={{
                         color: '#7B7870',
                         fontWeight: '500',
-                        fontSize: 20
+                        fontSize: Dimensions.get('window').height*0.03
                     }}>
                         Start Now
                     </Text>
                     <View style={{
-                        marginTop: 1
+                        marginTop: Dimensions.get('window').height*0.01
                     }}>
                         <Component2 text1="Talk to Councellor" text2="Not Enrolled" />
                         <Component2 text1="Talk to Nutritionist" text2="Not Enrolled" />

@@ -1,5 +1,5 @@
 import React from "react";
-import { ColorValue, Image, Pressable, Text, View } from "react-native";
+import { ColorValue, Dimensions, Image, Pressable, Text, View } from "react-native";
 interface ScreenProps{
     title:string,
     titleColor:ColorValue,
@@ -19,13 +19,15 @@ export default function MiddlewareScreen(props:ScreenProps){
 
     }
     
-    return <>
-    <View style={{
-        marginTop:30
+    return <View style={{
+        flex:1
+    }}>
+     <View style={{
+        marginTop:Dimensions.get('screen').height*0.03
     }}>
     <View style={{
-        marginLeft:6,
-        marginRight:6,
+        marginLeft:Dimensions.get('window').width*0.01,
+        marginRight:Dimensions.get('window').width*0.01,
         backgroundColor:'transparent',
         display:'flex',
         flexDirection:'row',
@@ -33,28 +35,16 @@ export default function MiddlewareScreen(props:ScreenProps){
        <Pressable onPress={()=>{
         props.navigationProp();
 }} style={{
-      height:25,
-      width:55,
-      margin:5,
       flex:1.2
   }}>
-  <View style={{
-      width:'90%',
-      backgroundColor:'#5B84B5',
-      borderRadius:30,
-      height:'20%'
-  }}></View>
-  <View style={{
-      marginTop:5,
-      width:'60%',
-      borderRadius:30,
-      backgroundColor:'#5B84B5',
-      height:'20%'
-  }}></View>
+  <Image resizeMode="contain" source={require('../Assets/DrawerNavigation.png')} style={{
+    width:Dimensions.get('screen').height*0.06,
+    height:Dimensions.get('screen').height*0.06
+  }}/>
 </Pressable>
             <Text style={{
                 color:props.titleColor,
-                fontSize:25,
+                fontSize:Dimensions.get('window').height*0.04,
                 paddingLeft:45,
                 fontWeight:'500',
                 textAlign:'center',
@@ -70,36 +60,56 @@ export default function MiddlewareScreen(props:ScreenProps){
 
             </View>
     </View>
-    </View>
+    </View> 
     <View style={{
         height:'100%',
+        marginTop:Dimensions.get('window').height*0.11,
+        backgroundColor:props.backgroundColor,
+        borderTopLeftRadius:40,
+        borderTopRightRadius:40,
     }}>
-     <View style={{
-        elevation:100,
+        <View style={{
          width:'100%',
          display:'flex',
          justifyContent:'center',
-         alignItems:'center'
+         alignItems:'center',
+        marginTop:-Dimensions.get('window').height*0.12,
         }}>
-        {/* <View style={{
-            borderWidth:1,
-            borderStyle:'solid',
-            borderRadius:225,
-            shadowColor:"red",
-            shadowRadius:10,
-            elevation:1,
-            shadowOpacity:1
-        }}> */}
-
     <Image style={{
-        height:200,
-        width:190,
+        height:Dimensions.get('window').height*0.2,
+        width:Dimensions.get('window').height*0.2,
     }} source={imageSrc}/>
-    {/* </View> */}
     </View>
     <View style={{
-        marginTop:-70,
-        elevation:-1,
+        paddingTop:Dimensions.get('window').height*0.02
+    }}>
+    {props.children}
+
+    </View>
+    </View>
+    {/* <View style={{
+        height:'100%',
+        backgroundColor:"red",
+        elevation:10,
+    }}>
+     <View style={{
+        elevation:10,
+        borderTopWidth: 0,
+         width:'100%',
+         display:'flex',
+         justifyContent:'center',
+         alignItems:'center',
+         backgroundColor:"blue"
+        }}>
+    <Image style={{
+        height:Dimensions.get('window').height*0.2,
+        width:Dimensions.get('window').height*0.2,
+    }} source={imageSrc}/>
+    </View>
+    <View style={{
+        marginTop:-Dimensions.get('window').height*0.08,
+        elevation:-10,
+        borderTopWidth: 0,
         backgroundColor:props.backgroundColor,
         borderTopLeftRadius:40,
         borderTopRightRadius:40,
@@ -108,6 +118,6 @@ export default function MiddlewareScreen(props:ScreenProps){
     }}>
        {props.children}
     </View>
+    </View> */}
     </View>
-    </>
 }

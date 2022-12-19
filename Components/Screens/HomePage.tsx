@@ -1,49 +1,43 @@
-import { Image, Pressable, ScrollView, Text, View, TouchableOpacity } from "react-native";
+import { Image, Pressable, ScrollView, Text, View, TouchableOpacity, Dimensions } from "react-native";
 import { SvgUri } from "react-native-svg";
 import Icon from 'react-native-vector-icons/Ionicons'
 // @ts-ignore
-import SVGImg  from "../Assets/holder.svg"
+import SVGImg from "../Assets/holder.svg"
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-type Props = NativeStackScreenProps<any,any>;
-
-
+type Props = NativeStackScreenProps<any, any>;
 function HorizontalController({ type }: { type: "meditate" | "inspire" | "nurture" }) {
     return <View style={{
-        height: 160,
-        margin: 10,
-        width: 350,
+        height: Dimensions.get('window').height * 0.17,
+        margin: Dimensions.get('window').height * 0.01,
+        borderRadius: Dimensions.get('window').height * 0.01,
+        width: Dimensions.get('window').width * 0.8,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
-        position: 'relative'
     }}>
+
         <View style={{
-            elevation: 2,
-            backgroundColor: 'transparent',
-            position: 'absolute'
+            width: '100%',
+            height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center'
         }}>
-            <View style={{
-                elevation: 10
-            }}>
-
-                <Image style={{
-                    height: 170,
-                    width: 170,
-                    backgroundColor: 'transparent',
-
-                }} source={type == "inspire" ? require("../Assets/inspire.png") : (type == "meditate" ? require("../Assets/girl.png") : (type == "nurture" ? require("../Assets/boy_running.png") : require("../Assets/boy_running.png")))} />
-                <Text style={{
-                    position: 'absolute',
-                    bottom: 0
-                }}>{type == "inspire" ? "Share your Stories" : (type == "meditate" ? "For Mental Health" : type == "nurture" ? "Your Daily Task " : null
-                )}</Text>
-            </View>
+            <Image style={{
+                height: Dimensions.get('window').height * 0.18,
+                width: Dimensions.get('window').height * 0.18,
+                backgroundColor: 'transparent',
+            }} source={type == "inspire" ? require("../Assets/inspire.png") : (type == "meditate" ? require("../Assets/girl.png") : (type == "nurture" ? require("../Assets/boy_running.png") : require("../Assets/boy_running.png")))} />
+            <Text style={{
+                position: 'absolute',
+                bottom: 0
+            }}>{type == "inspire" ? "Share your Stories" : (type == "meditate" ? "For Mental Health" : type == "nurture" ? "Your Daily Task " : null
+            )}</Text>
         </View>
         <View style={{
             width: "100%",
             bottom: 0,
-            height: 170 / 2,
+            height: '40%',
             position: 'absolute',
             opacity: 0.5,
             backgroundColor: type == "inspire" ? "#faadb2b0" : (type == "meditate" ? "#f9c747b0" : (type == "nurture" ? "#aadf8db0" : "white")),
@@ -56,225 +50,240 @@ function HorizontalController({ type }: { type: "meditate" | "inspire" | "nurtur
 export default function HomePage({ route, navigation }: Props) {
     return <>
         <View style={{
-            marginTop: 50,
-            // backgroundColor:"red",
-            height: 10,
-            width: "100%"
+            flex: 1,
         }}>
             <View style={{
-                paddingLeft: 10,
-                paddingRight: 10,
-                height: 30,
+                marginTop: Dimensions.get('window').height * 0.07,
+                // flex:0.09,
+                height: Dimensions.get('window').height * 0.06,
+                paddingLeft: '5%',
+                paddingRight: '5%',
                 display: 'flex',
-                flexDirection: 'row',
+                flexDirection: "row",
                 justifyContent: 'space-between'
             }}>
                 <Pressable onPress={() => {
-                    //@ts-ignore
+                    // @ts-ignore
                     navigation.openDrawer()
                 }} style={{
-                    height: "70%",
-                    width: 50,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between'
+                    height: '100%',
+                    width: '15%',
                 }}>
-                    <View style={{
-                        height: 7,
-                        width: '90%',
-                        backgroundColor: "#5B84B5",
-                        borderRadius: 10
-                    }}>
-                    </View>
-                    <View style={{
-                        height: 7,
-
-                        width: '50%',
-                        backgroundColor: "#5B84B5",
-                        borderRadius: 10
-                    }}>
-
-                    </View>
+                    <Image resizeMode="center" source={require('../Assets/DrawerNavigation.png')} style={{
+                        height: '100%',
+                        width: '100%'
+                    }} />
                 </Pressable>
                 <Pressable style={{
-                    position:'relative'
+                    position: 'relative',
+                    height: '100%',
+                    width: Dimensions.get('window').height * 0.07,
                 }} onPress={() => {
-                    
+                    navigation.navigate("Fav")
                 }}>
-                    <View style={{
-                        position:'absolute',
-                        right:10
-                    }}>
-
-                        <SVGImg />
-                    </View>
-
-                     
-                    <Icon style={{
-                        position:'absolute',
-                        right:23,
-                        top:13
-                    }} name="heart" color={"#f9595f"} size={33} />
+                    <Image resizeMode="contain" source={require('../Assets/Heart.png')} style={{
+                        height: '100%',
+                        width: '100%'
+                    }} />
                 </Pressable >
             </View>
-
-
-
-        </View>
-
-        <View>
+            {/* Header Ends */}
             <View style={{
-                marginTop: 70,
-                paddingLeft: 20
             }}>
-                <Text style={{
-                    fontSize: 20,
-                    color: "#696969"
+                <View style={{
+                    marginTop: Dimensions.get('window').height * 0.03,
+                    paddingLeft: Dimensions.get('window').height * 0.03
                 }}>
-                    Hello,
-                </Text>
-                <Text style={{
-                    fontSize: 30,
-                    fontWeight: "500",
-                    color: "#3E3E3E"
-                }}>
-                    Mehul
-                </Text>
+                    <Text style={{
+                        fontSize: Dimensions.get('window').height * 0.03,
+                        color: "#696969"
+                    }}>
+                        Hello,
+                    </Text>
+                    <Text style={{
+                        fontSize: Dimensions.get('window').height * 0.05,
+                        fontWeight: "500",
+                        color: "#3E3E3E"
+                    }}>
+                        Mehul
+                    </Text>
+                </View>
             </View>
-        </View>
-        <View
-        >
-
-
-
-            <ScrollView horizontal style={{
-                marginTop: 30,
-                // backgroundColor:'red',
-                // height:30,
-                width: "100%"
-            }}>
-                <HorizontalController type="inspire" />
-                <HorizontalController type="meditate" />
-                <HorizontalController type="nurture" />
-            </ScrollView>
-        </View>
-        <View style={{
-            // marginTop:-100
-            width: "100%",
-            justifyContent: 'center',
-            alignItems: 'center'
-        }}>
-            <Text style={{
-                fontSize: 30
-            }}>
-
-                Meditate
-            </Text>
-        </View>
-        <View style={{
-            marginTop: 40,
-            width: '100%',
-            // padding:,
-            paddingLeft: 10,
-            paddingTop: 4
-        }}>
-            <Text style={{
-                fontSize: 20,
-                color: 'black'
-            }}>
-                Recommendations
-            </Text>
-        </View>
-        <View style={{
-            paddingLeft: 20
-        }}>
+            {/* Hero Text Ends */}
+            <View>
+                <ScrollView horizontal>
+                    <HorizontalController type="inspire" />
+                    <HorizontalController type="meditate" />
+                    <HorizontalController type="nurture" />
+                </ScrollView>
+            </View>
             <View style={{
-                display: 'flex',
-                flexDirection: 'row'
-            }}>
-                <View>
-                    <Image style={{
-                        height: 70,
-                        width: 140,
-                        borderRadius: 20,
-                        margin: 10
-                    }} source={require('../Assets/yoga.png')} />
-                </View>
-                <View>
-                    <Image style={{
-                        height: 70,
-                        width: 140,
-                        borderRadius: 20,
-                        margin: 10
-                    }} source={require('../Assets/yoga.png')} />
-                </View>
-            </View>
-
-            <View style={{
-                display: 'flex',
-                flexDirection: 'row'
-            }}>
-                <View>
-                    <Image style={{
-                        height: 70,
-                        width: 140,
-                        borderRadius: 20,
-                        margin: 10
-                    }} source={require('../Assets/yoga.png')} />
-                </View>
-                <View>
-                    <Image style={{
-                        height: 70,
-                        width: 140,
-                        borderRadius: 20,
-                        margin: 10
-                    }} source={require('../Assets/yoga.png')} />
-                </View>
-            </View>
-        </View>
-        <View style={{
-            height: 40,
-            justifyContent: 'center',
-            alignItems: 'center'
-        }}>
-            <View  style={{
-                position:'relative',
-                height: '100%',
-                width: '60%',
-                backgroundColor: '#3C6CA7',
-                borderRadius: 10,
+                marginTop: Dimensions.get('window').height * 0.01,
+                width: "100%",
                 justifyContent: 'center',
                 alignItems: 'center'
             }}>
-                <TouchableOpacity onPress={()=>{
-                    
-                }} activeOpacity={0.6} style={{
-                    height:'100%',
-                    width:'100%',
-                    justifyContent: 'center',
-                alignItems: 'center'
-                }}>
                 <Text style={{
-                color: 'white'
-            }}>
-                Book a session with Therapist
-                </Text>
-                </TouchableOpacity>
-                    
-                <TouchableOpacity activeOpacity={0.2} onPress={()=>{
-
-                }} style={{
-                    backgroundColor:'#FA634F',
-                    height:'100%',
-                    position:"absolute",
-                    width:45,
-                    borderRadius:8,
-                    right:-50
+                    fontSize: Dimensions.get('window').height * 0.03,
+                    fontWeight: '600',
+                    color: '#5B84B5'
                 }}>
-
-                </TouchableOpacity>
+                    Meditate
+                </Text>
+            </View>
+            <View style={{
+                height: Dimensions.get('window').height * 0.03,
+                padding: Dimensions.get('window').height * 0.01,
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center'
+            }}>
+                <View style={{
+                    height: '100%',
+                    marginLeft: Dimensions.get('window').height * 0.01,
+                    marginRight: Dimensions.get('window').height * 0.01,
+                    backgroundColor: '#FCC6CA',
+                    width: Dimensions.get('window').width * 0.02,
+                    borderRadius: Dimensions.get('window').height * 0.8
+                }}>
                 </View>
+                <View style={{
+                    height: '100%',
+                    marginLeft: Dimensions.get('window').height * 0.01,
+                    marginRight: Dimensions.get('window').height * 0.01,
+                    backgroundColor: '#AADF8D',
+                    width: Dimensions.get('window').width * 0.02,
+                    borderRadius: Dimensions.get('window').height * 0.8
+                }}>
+                </View>
+                <View style={{
+                    height: '100%',
+                    marginLeft: Dimensions.get('window').height * 0.01,
+                    marginRight: Dimensions.get('window').height * 0.01,
+                    backgroundColor: '#F8B17C',
+                    width: Dimensions.get('window').width * 0.02,
+                    borderRadius: Dimensions.get('window').height * 0.8
+                }}>
+                </View>
+            </View>
 
+            <View style={{
+            }}>
+                <Text style={{
+                    fontSize: Dimensions.get('window').height * 0.03,
+                    color: '#3E3E3E',
+                    fontWeight: '600',
+                    paddingLeft: Dimensions.get('window').height * 0.03,
+                    marginTop: Dimensions.get('window').height * 0.01,
+                    marginBottom: Dimensions.get('window').height * 0.01
+                }}
+                >
+                    Recommendations
+                </Text>
+            </View>
+
+            <View style={{
+                height: Dimensions.get('window').height * 0.33,
+            }}>
+                <View style={{
+                    height: '50%',
+                    padding: Dimensions.get('window').height * 0.03,
+                    display: 'flex',
+                    flexDirection: 'row',
+                    width: '100%',
+                }}>
+                    <Pressable onPress={() => {
+
+                    }}>
+                        <Image resizeMode="cover" style={{
+                            height: '100%',
+                            width: Dimensions.get('window').width * 0.4,
+                            borderRadius: 20,
+                            margin: 10
+                        }} source={require('../Assets/yoga.png')} />
+                    </Pressable>
+                    <Pressable onPress={() => {
+                    }}>
+                        <Image resizeMode="cover" style={{
+                            height: '100%',
+                            width: Dimensions.get('window').width * 0.4,
+                            borderRadius: 20,
+                            margin: 10
+                        }} source={require('../Assets/yoga.png')} />
+                    </Pressable>
+                </View>
+                <View style={{
+                    height: '50%',
+                    padding: Dimensions.get('window').height * 0.03,
+                    display: 'flex',
+                    flexDirection: 'row',
+                    width: '100%',
+                }}>
+                    <Pressable onPress={() => {
+
+                    }}>
+                        <Image resizeMode="cover" style={{
+                            height: '100%',
+                            width: Dimensions.get('window').width * 0.4,
+                            borderRadius: 20,
+                            margin: 10
+                        }} source={require('../Assets/yoga.png')} />
+                    </Pressable>
+                    <Pressable onPress={() => {
+                    }}>
+                        <Image resizeMode="cover" style={{
+                            height: '100%',
+                            width: Dimensions.get('window').width * 0.4,
+                            borderRadius: 20,
+                            margin: 10
+                        }} source={require('../Assets/yoga.png')} />
+                    </Pressable>
+                </View>
+            </View>
+            <View style={{
+                marginTop: Dimensions.get('window').height * 0.007,
+                height: Dimensions.get('window').height * 0.06,
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}>
+                <View style={{
+                    position: 'relative',
+                    height: '100%',
+                    width: '50%',
+                    backgroundColor: '#3C6CA7',
+                    borderRadius: 10,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <TouchableOpacity onPress={() => {
+
+                    }} activeOpacity={0.6} style={{
+
+                        height: '100%',
+                        width: '100%',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <Text style={{
+                            color: 'white',
+                            fontSize: Dimensions.get('window').height * 0.017
+                        }}>
+                            Book a session with Therapist
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity activeOpacity={0.2} onPress={() => {
+                    }} style={{
+                        marginLeft: Dimensions.get('window').width * 0.5,
+                        backgroundColor: '#FA634F',
+                        height: '100%',
+                        position: "absolute",
+                        width: Dimensions.get('window').width * 0.10,
+                        borderRadius: 8,
+                        right: -50
+                    }}>
+                    </TouchableOpacity>
+                </View>
+            </View>
         </View>
     </>
 }

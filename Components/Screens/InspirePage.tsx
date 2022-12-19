@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, Button, Text, View, Pressable } from "react-native";
+import { ScrollView, Button, Text, View, Pressable, Dimensions,Image } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'
 import MiddlewareScreen from "../Modules/MiddleWareScreen";
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -11,8 +11,8 @@ interface PostComponentsProps {
 function PostComponent(props: PostComponentsProps) {
     const [isLiked, setLiked] = React.useState<boolean>(props.isLiked)
     return <><View style={{
-        marginBottom: 20,
-        height: 400,
+        marginBottom: '5%',
+        height: Dimensions.get('window').height*0.42,
         width: '90%'
     }}>
         <View style={{
@@ -26,26 +26,25 @@ function PostComponent(props: PostComponentsProps) {
                 flexDirection: 'row'
             }}>
                 <View style={{
-                    height: 50,
-                    width: 50,
+                    height: Dimensions.get('window').height*0.06,
+                    width: Dimensions.get('window').height*0.06,
                     backgroundColor: "#D9D9D9",
-                    borderRadius: 20,
+                    borderRadius: Dimensions.get('window').height*0.02,
                 }}>
-
                 </View>
                 <View style={{
-                    height: 50,
+                    height: Dimensions.get('window').height*0.06,
                     justifyContent: 'center'
                 }}>
                     <Text style={{
                         color: "#787878",
-                        padding: 10
+                        padding: '2%'
                     }}>{props.name}</Text>
                 </View>
             </View>
             <Pressable onPress={() => { }} style={{
-                height: 50,
-                width: 50,
+                height: Dimensions.get('window').height*0.06    ,
+                width: Dimensions.get('window').height*0.06,
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center'
@@ -74,7 +73,7 @@ function PostComponent(props: PostComponentsProps) {
         <View style={{
             marginTop: 10,
             backgroundColor: 'white',
-            height: 290
+            height: '70%'
         }}>
 
 
@@ -95,17 +94,17 @@ function PostComponent(props: PostComponentsProps) {
                     setLiked(prev => !prev)
 
                 }}>
-                    <Icon name={isLiked ? "heart" : "heart-outline"} color={isLiked ? "#f9595f" : "black"} size={35} />
+                    <Icon name={isLiked ? "heart" : "heart-outline"} color={isLiked ? "#f9595f" : "black"} size={Dimensions.get('window').height*0.04} />
                 </Pressable>
                 <Pressable onPress={() => { }} style={{
                     marginLeft: 15
                 }}>
-                    <Icon name="chatbubble-outline" size={33} />
+                    <Icon name="chatbubble-outline" size={Dimensions.get('window').height*0.04} />
                 </Pressable>
 
             </View>
             <Pressable>
-                <Icon name="bookmark-outline" size={33} />
+                <Icon name="bookmark-outline" size={Dimensions.get('window').height*0.04} />
             </Pressable>
 
         </View>
@@ -121,29 +120,41 @@ export default function InspirePage({ route, navigation }: Props) {
     }}>
         {/* @ts-ignore */}
         <MiddlewareScreen navigationProp={navigation.openDrawer} ImageType="Inspire" backgroundColor={"#fcc2c636"} title="Inspire" titleColor={"#FCC2C6"} >
-            <ScrollView style={{
-                flex: 1,
-                width: '100%',
-                height: '100%',
+            <View>
+                <ScrollView style={{
+                    width:'100%',
+                }} contentContainerStyle={{
+                    justifyContent:'center',
+                    alignItems:'center',
+                }}>
 
-            }} contentContainerStyle={{
-                justifyContent: 'center',
-                alignItems: 'center'
-            }}>
-
-                <PostComponent name="Mehul" isLiked />
-                <PostComponent name="Mehul" isLiked={false} />
+            <PostComponent name="Mehul" isLiked />
+            <PostComponent name="Mehul" isLiked={false} />
                 <PostComponent name="Mehul" isLiked />
                 <PostComponent name="Mehul" isLiked />
                 <PostComponent name="Mehul" isLiked={false} />
-            </ScrollView>
+                </ScrollView>
+            </View>
         </MiddlewareScreen>
-        <View style={{
+        <Pressable onPress={()=>{
+        }} style={{
             position: 'absolute',
             bottom: 20,
-            right: 20
+            right: 20,
+            width:Dimensions.get('window').height*0.09,
+            height:Dimensions.get('window').height*0.09,
+            backgroundColor:'#9C5DA3',
+            justifyContent:'center',
+            alignItems:'center',
+            borderRadius:Dimensions.get('window').height*0.3
         }}>
-            <Icon name="add-circle" size={60} color="#9C5DA3" />
-        </View>
+            <Image source={require('../Assets/Add.png')} resizeMode="contain" style={{
+                // width:Dimensions.get('window').height*0.09,
+                // height:Dimensions.get('window').height*0.09
+                width:'80%',
+                height:'80%'
+            }}/>
+            {/* <Icon name="add-circle" size={60} color="#9C5DA3" /> */}
+        </Pressable >
     </View>
 }

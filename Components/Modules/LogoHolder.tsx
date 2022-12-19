@@ -1,27 +1,24 @@
-import { View,StyleSheet, Text } from "react-native";
+import { View,StyleSheet, Text, Dimensions } from "react-native";
 
-export default function LogoHolder(){
-    return <><View style={style.Holder}>
+export default function LogoHolder(props:{height:string,width:string}){
+    return <><View style={{
+        backgroundColor:'#D9D9D9',
+        height:props.height,
+        width:props.width,
+        borderRadius:20,
+        display: 'flex',
+        justifyContent:'center',
+        alignItems:'center'
+    }}>
         <Text style={style.Text}>Logo</Text>
     </View>
     </>
 }
 
 const style = StyleSheet.create({
-    Holder:{
-        backgroundColor:'#D9D9D9',
-        height:80,
-        width:150,
-        borderRadius:20,
-        textAlign:"center",
-        display: 'flex',
-        justifyContent:'center',
-        alignItems:'center'
-
-    },
     Text:{
         color:'#787878',
-        fontSize:35,
+        fontSize:Dimensions.get('window').height*0.04,
         fontWeight: "500"
     }
 })
